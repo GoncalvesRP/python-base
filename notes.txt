@@ -1,0 +1,4 @@
+Minha primeira nota	geral	nota 1
+Minha segunda nota	tech	nota 2
+Minha terceira nota	tech	java e legal
+Minha quarta nota	sistema	Aprendizagem geral de Linux

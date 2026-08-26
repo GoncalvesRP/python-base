@@ -1,0 +1,5 @@
+Hello
+Hello
+Este é um texto
+cada item desta lista
+é uma linha no arquivo
