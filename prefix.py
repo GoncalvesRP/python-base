@@ -1,13 +1,10 @@
 #!/usr/bin/env python3
-
 """Calculadora prefix.
     
 Funcionamento:
-    
 [operação] [n1] [2]
 
 Operações:
-
 sum -> +
 sub -> -
 mul -> *
@@ -17,7 +14,6 @@ Uso:
 
 $ python3 prefix.py sum 1 2
 3
-
 $ python3 prefix.py mul 10 5
 50
 
@@ -72,7 +68,12 @@ for num in nums:
         num = int(num)
     validate_numbers.append(num)
 
-n1, n2 = validate_numbers
+try:
+    n1, n2 = validate_numbers
+except ValueError as e:
+    print(str(e))
+    sys.exit(1)    
+    
 # TODO: Usar dic de funções
 if operation == "sum":
     result = n1 + n2
@@ -83,12 +84,19 @@ elif operation == "mul":
 elif operation == "div":   
     result = n1 / n2
 
-path = os.curdir
+print(f"O resultado é {result}")
+
+path = "/"
 filepath = os.path.join(path, "prefixcalc.log")
 timestamp = datetime.now().isoformat()
 user = os.getenv('USER','anonymous')
 
-with open(filepath, "a") as file_:
-    file_.write(f"{timestamp} - {user} - {operation},{n1},{n2} = {result}\n")
+try:
+    with open(filepath, "a") as file_:
+        file_.write(f"{timestamp} - {user} - {operation},{n1},{n2} = {result}\n")
+except PermissionError as e:
+    # TODO: logging
+    print(str(e))
+    sys.exit(1)
+    
 
-print(f"O resultado é {result}")
