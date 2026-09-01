@@ -1,0 +1,33 @@
+#!/usr/bin/env python3
+
+import os
+import logging
+
+# BOILERPLATE
+# TODO: usar função
+# TODO: usar lib (loguru)
+log_level = os.getenv("LOG_LEVEL", "WARNING").upper()
+log = logging.Logger("rogerio", log_level)
+ch = logging.StreamHandler() # Console/terminal/stderr
+ch.setLevel(log_level)
+fmt = logging.Formatter(
+    '%(asctime)s %(name)s %(levelname)s '
+    'l:%(lineno)d f:%(filename)s: %(message)s'
+)
+ch.setFormatter(fmt)
+log.addHandler(ch)
+
+
+"""
+log.debug("Mensagem para o dev, qe, sysadmin")
+log.info ("Mensagem geral para o usuario")
+log.warning("Aviso que nao causa erro")
+log.error("Erro que afeta uma unica execucao")
+log.critical("Erro geral. Ex: Banco de dados fora do ar")
+"""
+
+try:
+    1 / 0
+except ZeroDivisionError as e:
+    log.error("Deu erro %s", str(e))
+    
