@@ -1,0 +1,5 @@
+1,Suite Master,500
+2,Quato Familia,200
+3,Quarto Single,100
+4,Quarto Simples,50
+5,Quarto Quiosque,150
